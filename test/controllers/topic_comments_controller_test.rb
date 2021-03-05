@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserThreadsControllerTest < ActionDispatch::IntegrationTest
+class TopicCommentsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

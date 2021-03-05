@@ -27,11 +27,16 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
 
-  get '/threads'                            => 'user_threads#list',   as: 'thread_list'
-  get '/users/:user_id/threads/new'         => 'user_threads#new',    as: 'thread_new'
-  get '/users/:user_id/threads/:thread_id'  => 'user_threads#get',    as: 'thread_get'
-  post '/users/:user_id/threads'            => 'user_threads#create', as: 'thread_create'
 
-  post '/users/:user_id/comment'               => 'user_comments#create', as: 'comment_create'
-  delete '/users/:user_id/comment/:comment_id' => 'user_comments#delete', as: 'comment_delete'
+  resources :topics, only: [:index, :show, :new, :create] do
+    resources :topic_comments, only: [:create, :destroy]
+  end
+
+  # get '/topics'                            => 'topics#index',   as: 'topic_list'
+  # get '/users/:user_id/topics/new'         => 'user_topics#new',    as: 'topic_new'
+  # get '/users/:user_id/topics/:topic_id'  => 'user_topics#get',    as: 'topic_get'
+  # post '/users/:user_id/topics'            => 'user_topics#create', as: 'topic_create'
+  #
+  # post '/users/:user_id/comment'               => 'topic_comments#create', as: 'comment_create'
+  # delete '/users/:user_id/comment/:comment_id' => 'topic_comments#delete', as: 'comment_delete'
 end

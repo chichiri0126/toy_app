@@ -35,12 +35,12 @@ end
 
 10.times do
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.user_threads.create!(title: content, description: content) }
+  users.each { |user| user.topics.create!(title: content, description: content) }
 end
-threads = UserThread.order(:created_at).take(100)
+topics = Topic.order(:created_at).take(100)
 10.times do
   content = Faker::Lorem.sentence(5)
-  threads.each { |thread| thread.user_comments.create!(body: content, user_id: rand(1..10), commented_at: Time.current) }
+  topics.each { |topic| topic.topic_comments.create!(body: content, user_id: rand(1..10), commented_at: Time.current) }
 end
 
 
