@@ -15,7 +15,7 @@ class UserThreadsController < ApplicationController
     @title = "Thread"
     @user |= User.find(params[:user_id])
     @thread = UserThread.find(params[:thread_id])
-    @comments = UserComment.where(user_thread_id: params[:thread_id]).sort_by{ |e| e.commented_at }
+    @thread.user_comments.sort_by{ |e| e.commented_at }
     @comment = UserComment.new user_thread_id:params[:thread_id]
     render 'thread'
   end

@@ -5,10 +5,10 @@
 </div>
 
 <div>
-  <% if @comments.any? %>
-    <h2>Comments (<%= @comments.count %>)</h2>
+  <% if @thread.user_comments.any? %>
+    <h2>Comments (<%= @thread.user_comments.count %>)</h2>
 
-    <% @comments.each do |comment| %>
+    <% @thread.user_comments.each do |comment| %>
       <%= render "user_comments/comment", comment: comment %>
     <% end %>
 
