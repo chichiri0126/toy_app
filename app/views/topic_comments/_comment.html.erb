@@ -2,7 +2,7 @@
   <span>
     <%= comment.body %> from:<%= comment.user.name %>
     <% if comment.deletable? current_user %>
-      <%= link_to "削除", topic_topic_comment_path(topic_id: comment.topic_id, id: comment.id), method: :delete %>
+      <%= link_to "削除", topic_comment_path(topic_id: comment.topic_id, id: comment.id), method: :delete %>
     <% end %>
   </span>
 </div>
