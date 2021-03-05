@@ -1,0 +1,8 @@
+<div>
+  <span>
+    <%= comment.body %> from:<%= comment.user.name %>
+    <% if comment.deletable? current_user %>
+      <%= link_to "削除", comment_delete_path(user_id: comment.user_id, comment_id: comment.id), method: :delete %>
+    <% end %>
+  </span>
+</div>

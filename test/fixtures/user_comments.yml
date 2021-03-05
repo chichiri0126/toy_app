@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  user_thread_id: 1
+  body: MyText
+  commented_at: 2021-03-05 04:30:53
+
+two:
+  user_id: 1
+  user_thread_id: 1
+  body: MyText
+  commented_at: 2021-03-05 04:30:53

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210304082820) do
+ActiveRecord::Schema.define(version: 20210305043053) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -30,6 +30,26 @@ ActiveRecord::Schema.define(version: 20210304082820) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "user_comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "user_thread_id"
+    t.text     "body"
+    t.datetime "commented_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_user_comments_on_user_id"
+    t.index ["user_thread_id", "commented_at"], name: "index_user_comments_on_user_thread_id_and_commented_at"
+  end
+
+  create_table "user_threads", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_user_threads_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

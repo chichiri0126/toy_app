@@ -26,4 +26,12 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+
+  get '/threads'                            => 'user_threads#list',   as: 'thread_list'
+  get '/users/:user_id/threads/new'         => 'user_threads#new',    as: 'thread_new'
+  get '/users/:user_id/threads/:thread_id'  => 'user_threads#get',    as: 'thread_get'
+  post '/users/:user_id/threads'            => 'user_threads#create', as: 'thread_create'
+
+  post '/users/:user_id/comment'               => 'user_comments#create', as: 'comment_create'
+  delete '/users/:user_id/comment/:comment_id' => 'user_comments#delete', as: 'comment_delete'
 end
