@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20210305043053) do
   end
 
   create_table "topic_comments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "topic_id"
-    t.text     "body"
-    t.datetime "commented_at"
+    t.integer  "user_id",      null: false
+    t.integer  "topic_id",     null: false
+    t.text     "body",         null: false
+    t.datetime "commented_at", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["topic_id", "commented_at"], name: "index_topic_comments_on_topic_id_and_commented_at"
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20210305043053) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.string   "description"
+    t.integer  "user_id",     null: false
+    t.string   "title",       null: false
+    t.string   "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_topics_on_user_id"

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
 
   resources :topics, only: [:index, :show, :new, :create] do
-    resources :comments, only: [:create, :destroy],     controller: 'topic_comments'
+  resources :comments, only: [:create, :destroy],     controller: 'topic_comments'
   end
 
   # get '/topics'                            => 'topics#index',   as: 'topic_list'

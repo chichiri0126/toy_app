@@ -5,7 +5,7 @@
 </div>
 
 <div>
-  <% if @topic.topic_comments.any? %>
+  <% if @topic.topic_comments.present? %>
     <h2>Comments (<%= @topic.topic_comments.count %>)</h2>
 
     <% @comments.each do |comment| %>

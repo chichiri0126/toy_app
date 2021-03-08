@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
     @title = "Topic"
     @topic = Topic.find(params[:id])
     @comments = @topic.topic_comments.includes(:user).order(commented_at: :desc)
-    @comment = TopicComment.new topic_id:params[:topic_id]
+    @comment = TopicComment.new(topic_id: params[:topic_id])
   end
 
   # form / create topic

@@ -3,7 +3,7 @@ class TopicCommentsController < ApplicationController
 
   # exec / create comment
   def create
-    @comment = TopicComment.new(comment_params.merge(commented_at: Time.current))
+    @comment = TopicComment.new(comment_params)
     if @comment.save
       flash[:success] = "Success comment."
     end
@@ -28,6 +28,6 @@ class TopicCommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:topic_comment).permit(:body).merge(user_id: current_user.id, topic_id: params[:topic_id])
+    params.require(:topic_comment).permit(:body).merge(user_id: current_user.id, topic_id: params[:topic_id], commented_at: Time.current)
   end
 end
