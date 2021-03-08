@@ -31,12 +31,4 @@ Rails.application.routes.draw do
   resources :topics, only: [:index, :show, :new, :create] do
   resources :comments, only: [:create, :destroy],     controller: 'topic_comments'
   end
-
-  # get '/topics'                            => 'topics#index',   as: 'topic_list'
-  # get '/users/:user_id/topics/new'         => 'user_topics#new',    as: 'topic_new'
-  # get '/users/:user_id/topics/:topic_id'  => 'user_topics#get',    as: 'topic_get'
-  # post '/users/:user_id/topics'            => 'user_topics#create', as: 'topic_create'
-  #
-  # post '/users/:user_id/comment'               => 'topic_comments#create', as: 'comment_create'
-  # delete '/users/:user_id/comment/:comment_id' => 'topic_comments#delete', as: 'comment_delete'
 end
