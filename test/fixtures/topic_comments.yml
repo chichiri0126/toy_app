@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% @topic = Topic.first %>
+topic_comment_1:
+  user_id: 1
+  topic_id:  <%= "#{@topic.id}" %>
+  body: "body_test"
+  commented_at: <%= Time.zone.now %>

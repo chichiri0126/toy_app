@@ -10,6 +10,12 @@
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+    <div>
+      <h3>Topics</h3>
+      <% @user.topics.each do |topic| %>
+        <%= render 'topics/topic', topic: topic %>
+      <% end %>
+    </div>
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>

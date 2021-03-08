@@ -1,0 +1,28 @@
+<% provide(:title, @title) %>
+<h1><%= @topic.title %></h1>
+<div>
+  <span><%= @topic.description %></span>
+</div>
+
+<div>
+  <% if @topic.topic_comments.present? %>
+    <h2>Comments (<%= @topic.topic_comments.count %>)</h2>
+
+    <% @comments.each do |comment| %>
+      <%= render "topic_comments/comment", comment: comment %>
+    <% end %>
+
+    <%#= will_paginate @microposts %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_for(@comment, url: topic_comments_path(topic_id:@topic.id)) do |f| %>
+
+
+    <%= f.label :body %>
+    <%= f.text_field :body, class: 'form-control' %>
+
+    <%= f.submit "create", class: "btn btn-primary" %>
+  <% end %>
+</div>
